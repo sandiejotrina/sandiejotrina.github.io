@@ -30,8 +30,8 @@
         <p class="eyebrow">Sample work</p>
         <h1>Tools I use, ready to run on Monday.</h1>
         <p class="lede">Case studies show what happened. These show how I think. Each one is a working tool from the Diagnose Before You Prescribe method, built with no client or employer data.</p>
-        <a class="btn" href="#rapid">RAPID scorecard</a>
-        <a class="btn ghost" href="#review-gate">AI review gate</a>
+        <a class="btn" href="rapid.html">Try the RAPID scorer</a>
+        <a class="btn ghost" href="#workflow">See a before and after</a>
       </div>
     </div>
 
@@ -40,6 +40,7 @@
         <p class="eyebrow">Sample 1 · Prescribe</p>
         <h2 id="rapid-h">RAPID: what to automate</h2>
         <p>Score a candidate process from 1 to 4 on each of five questions. Total out of 20.</p>
+        <p><a class="btn" style="margin:4px 0 16px" href="rapid.html">Open the interactive RAPID scorer</a></p>
         <div class="match">
           <div class="match-row"><div><b>R · Repetitive</b></div><div>Does it happen often, the same way each time?</div></div>
           <div class="match-row"><div><b>A · Accuracy-critical</b></div><div>Do errors carry real cost, risk, or rework?</div></div>
@@ -72,9 +73,78 @@
       </div>
     </section>
 
+    <section id="workflow" aria-labelledby="flow-h">
+      <div class="wrap">
+        <p class="eyebrow">Sample 3 · Diagnose and Treat</p>
+        <h2 id="flow-h">Before and after: a physician training workflow</h2>
+        <p>The real steps of a workflow I redesigned in a regulated Medical Affairs team. No employer data, names, or volumes. The symptom was slow turnaround. The diagnosis was unowned handoffs, and the ones carrying the most risk sat at the end of the chain.</p>
+        <div class="legend" aria-hidden="true">
+          <span><i class="sw manual"></i>Manual handoff</span>
+          <span><i class="sw auto"></i>Automated</span>
+          <span><i class="sw break"></i>Where it broke</span>
+        </div>
+        <div class="ba" role="table" aria-label="Workflow before and after">
+          <div class="ba-head" role="row"><span role="columnheader">Step</span><span role="columnheader">Before</span><span role="columnheader">After</span></div>
+          <div class="ba-row" role="row">
+            <span class="ba-step" role="cell"><b>1</b>Confirm the proctor</span>
+            <span class="ba-before" role="cell"><small>Before</small>Email back and forth until someone replies</span>
+            <span class="ba-after" role="cell"><small>After</small>Automated request and confirmation</span>
+          </div>
+          <div class="ba-row" role="row">
+            <span class="ba-step" role="cell"><b>2</b>Schedule the event</span>
+            <span class="ba-before" role="cell"><small>Before</small>Calendar entries created by hand</span>
+            <span class="ba-after" role="cell"><small>After</small>Calendar invitation sent on confirmation</span>
+          </div>
+          <div class="ba-row" role="row">
+            <span class="ba-step" role="cell"><b>3</b>Remind before the event</span>
+            <span class="ba-before" role="cell"><small>Before</small>Reminder emails sent by hand, when someone remembers</span>
+            <span class="ba-after" role="cell"><small>After</small>Reminders sent on a fixed schedule</span>
+          </div>
+          <div class="ba-row" role="row">
+            <span class="ba-step" role="cell"><b>4</b>Record training attestation</span>
+            <span class="ba-before" role="cell"><small>Before</small>Forms collected and filed after the fact</span>
+            <span class="ba-after" role="cell"><small>After</small>Digital attestation captured at the event</span>
+          </div>
+          <div class="ba-row" role="row">
+            <span class="ba-step" role="cell"><b>5</b>Collect feedback</span>
+            <span class="ba-before" role="cell"><small>Before</small>Survey sent by hand</span>
+            <span class="ba-after" role="cell"><small>After</small>Survey sent automatically after the event</span>
+          </div>
+          <div class="ba-row" role="row">
+            <span class="ba-step" role="cell"><b>6</b>Follow up on responses</span>
+            <span class="ba-before" role="cell"><small>Before</small>Inbox chasing</span>
+            <span class="ba-after" role="cell"><small>After</small>Follow-up triggered by each response</span>
+          </div>
+          <div class="ba-row is-break" role="row">
+            <span class="ba-step" role="cell"><b>7</b>Track case reviews and response time<em>Where it broke</em></span>
+            <span class="ba-before" role="cell"><small>Before</small>Manual logs, often incomplete</span>
+            <span class="ba-after" role="cell"><small>After</small>Captured automatically as emails arrive</span>
+          </div>
+          <div class="ba-row is-break" role="row">
+            <span class="ba-step" role="cell"><b>8</b>Give Finance a basis for payment<em>Where it broke</em></span>
+            <span class="ba-before" role="cell"><small>Before</small>Reconstructed from the logs</span>
+            <span class="ba-after" role="cell"><small>After</small>Auditable record created as the work happens</span>
+          </div>
+          <div class="ba-row ba-human" role="row">
+            <span class="ba-step" role="cell"><b>&#9679;</b>Clinical decisions and exceptions</span>
+            <span class="ba-before" role="cell"><small>Before</small>Competing with admin work for the team's time</span>
+            <span class="ba-after" role="cell"><small>After</small>Kept with people, by design, with time to do them well</span>
+          </div>
+        </div>
+        <div class="stats" style="margin-top:20px">
+          <div class="stat"><strong>8 to 0</strong><span>manual handoffs in the routine path</span></div>
+          <div class="stat"><strong>Audit ready</strong><span>Finance pays from a record created as the work happens, not rebuilt from logs</span></div>
+          <div class="stat"><strong>70%</strong><span>fewer manual processes across the wider operation this was part of</span></div>
+        </div>
+        <div class="callout">
+          <p><b>The lesson:</b> nobody here needed more training. The process needed owned handoffs. Fix the handoff and the audit trail comes for free. <a href="work/physician-training-workflow.html">Read the full case study</a>.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="review-gate" aria-labelledby="gate-h">
       <div class="wrap">
-        <p class="eyebrow">Sample 3 · Treat</p>
+        <p class="eyebrow">Sample 4 · Treat</p>
         <h2 id="gate-h">The AI review gate</h2>
         <p>A pattern for using generative AI where accuracy and accountability matter: training content, client communication, regulated correspondence.</p>
         <ol class="flow">
@@ -90,7 +160,7 @@
 
     <section id="certification" aria-labelledby="cert-h">
       <div class="wrap">
-        <p class="eyebrow">Sample 4 · Follow Up</p>
+        <p class="eyebrow">Sample 5 · Follow Up</p>
         <h2 id="cert-h">A certification path that proves readiness</h2>
         <p>One structure for any field or client-facing role. Certified means able to do the work, not finished with the modules.</p>
         <ol class="flow">

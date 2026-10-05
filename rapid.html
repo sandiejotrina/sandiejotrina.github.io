@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAPID Scorer | Sandie Dela Cruz</title>
+  <meta name="description" content="Score any process on RAPID to decide whether to automate it, document it first, or redesign it. An interactive tool from the Diagnose Before You Prescribe method.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .scorer { display: grid; gap: 24px; margin-top: 24px; }
+    @media (min-width: 900px) { .scorer { grid-template-columns: 3fr 2fr; align-items: start; } }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+    .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 20px; }
+    .chip {
+      font: inherit; font-size: 0.9rem; cursor: pointer;
+      padding: 8px 14px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    }
+    .chip:hover, .chip[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+    label.field { display: block; font-weight: 600; margin-bottom: 6px; }
+    input[type="text"] {
+      width: 100%; font: inherit; padding: 10px 12px; border-radius: 6px;
+      border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    }
+    fieldset { border: 0; padding: 0; margin: 22px 0 0; }
+    legend { font-weight: 700; padding: 0; }
+    legend span { color: var(--gold); margin-right: 6px; }
+    .q { color: var(--ink-soft); font-size: 0.93rem; margin: 2px 0 10px; }
+    .opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .opts input { position: absolute; opacity: 0; pointer-events: none; }
+    .opts label {
+      display: block; text-align: center; cursor: pointer;
+      padding: 8px 4px; border: 1px solid var(--line); border-radius: 6px;
+      font-size: 0.82rem; line-height: 1.3; background: var(--bg);
+    }
+    .opts label b { display: block; font-size: 1.05rem; }
+    .opts input:checked + label { border-color: var(--gold); background: var(--gold-soft); }
+    .opts input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .checks { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .checks label { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; cursor: pointer; }
+    .checks input { margin-top: 5px; accent-color: var(--gold); }
+    .result { position: sticky; top: 16px; }
+    .total { font-family: "Source Serif 4", Georgia, serif; font-size: 3rem; line-height: 1; color: var(--gold); }
+    .total small { font-size: 1.2rem; color: var(--ink-soft); }
+    .meter { height: 10px; border-radius: 999px; background: var(--line); margin: 14px 0 6px; position: relative; overflow: hidden; }
+    .meter i { position: absolute; inset: 0 auto 0 0; background: var(--gold); border-radius: 999px; transition: width 0.2s; }
+    .bands { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--ink-soft); }
+    .verdict { margin-top: 18px; padding: 16px; border-radius: 8px; background: var(--gold-soft); border-left: 4px solid var(--gold); }
+    .verdict h3 { margin: 0 0 4px; }
+    .verdict p { margin: 0; }
+    .flags { list-style: none; padding: 0; margin: 14px 0 0; }
+    .flags li { padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; margin-bottom: 8px; font-size: 0.93rem; }
+    .flags li b { color: var(--gold); }
+    .actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .actions button {
+      font: inherit; font-weight: 600; cursor: pointer; padding: 10px 16px; border-radius: 6px;
+      border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    }
+    .actions button.primary { background: #d4ae5c; border-color: #d4ae5c; color: #1f2124; }
+    .note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 10px; }
+    @media print {
+      .site-header, .site-footer, .hero .btn, .examples, .actions, .note { display: none !important; }
+      .hero { background: none !important; color: #000 !important; padding: 0 !important; }
+      .result { position: static; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Sandie Dela Cruz <span>AuD, OD, MBA</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#method">Method</a>
+        <a href="samples.html" aria-current="page">Samples</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Interactive tool · Prescribe</p>
+        <h1>Should you automate it? Score it.</h1>
+        <p class="lede">RAPID tells you whether a process can be automated. The diagnostic checks underneath tell you whether it should be. Try an example or score your own process.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="scorer">
+          <form class="panel" id="rapid-form" onsubmit="return false">
+            <p class="eyebrow" style="margin-bottom:4px">Load a worked example</p>
+            <div class="examples" role="group" aria-label="Worked examples">
+              <button type="button" class="chip" data-ex="0">Physician training confirmations</button>
+              <button type="button" class="chip" data-ex="1">Vendor invoice matching</button>
+              <button type="button" class="chip" data-ex="2">Quarterly strategy narrative</button>
+            </div>
+
+            <label class="field" for="pname">Process name</label>
+            <input type="text" id="pname" placeholder="For example: new hire system access requests">
+
+            <div id="dims"></div>
+
+            <div class="checks">
+              <p class="eyebrow" style="margin-bottom:10px">Diagnose before you prescribe</p>
+              <label><input type="checkbox" id="c-broken"> <span>The process has a known break today: rework, missed steps, or complaints.</span></label>
+              <label><input type="checkbox" id="c-owner"> <span>A handoff in this process has no clear owner.</span></label>
+              <label><input type="checkbox" id="c-value"> <span>No one could say what would go wrong if this process stopped.</span></label>
+            </div>
+          </form>
+
+          <aside class="panel result" aria-live="polite">
+            <p class="eyebrow" style="margin-bottom:6px" id="r-name">Your result</p>
+            <div class="total"><span id="r-total">0</span><small> / 20</small></div>
+            <div class="meter" aria-hidden="true"><i id="r-bar" style="width:0%"></i></div>
+            <div class="bands"><span>5</span><span>10</span><span>15</span><span>20</span></div>
+            <div class="verdict">
+              <h3 id="r-verdict">Score all five</h3>
+              <p id="r-detail">Pick a level for each letter, or load an example.</p>
+            </div>
+            <ul class="flags" id="r-flags"></ul>
+            <div class="actions">
+              <button type="button" class="primary" id="b-print">Save as PDF</button>
+              <button type="button" id="b-reset">Start over</button>
+            </div>
+            <p class="note">Nothing you enter leaves your browser.</p>
+          </aside>
+        </div>
+        <p style="margin-top:28px"><a href="samples.html">Back to all sample work</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Sandie Dela Cruz, AuD, OD, MBA</span>
+      <span><a href="contact.html">Contact</a> · <a href="https://www.linkedin.com/in/sandiedelacruz">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var DIMS = [
+      { k: "R", name: "Repetitive", q: "How often does it run the same way?",
+        levels: ["Rarely", "Monthly", "Weekly", "Daily or more"] },
+      { k: "A", name: "Accuracy-critical", q: "What does an error cost?",
+        levels: ["Little", "Some rework", "Real cost", "Risk or compliance"] },
+      { k: "P", name: "Predictable", q: "How stable are the inputs and rules?",
+        levels: ["Judgment calls", "Often varies", "Mostly stable", "Rule-based"] },
+      { k: "I", name: "Integration-heavy", q: "How much do people move data between systems?",
+        levels: ["None", "One system", "Two systems", "Three or more"] },
+      { k: "D", name: "Documented", q: "Could someone build from the written process?",
+        levels: ["Lives in heads", "Partial notes", "Mostly written", "Fully written"] }
+    ];
+    var EXAMPLES = [
+      { name: "Physician training confirmations", s: [4, 3, 4, 4, 3], broken: true, owner: true, value: false },
+      { name: "Vendor invoice matching", s: [4, 4, 3, 3, 2], broken: false, owner: false, value: false },
+      { name: "Quarterly strategy narrative", s: [1, 3, 1, 2, 1], broken: false, owner: false, value: false }
+    ];
+
+    var dimsEl = document.getElementById("dims");
+    DIMS.forEach(function (d, i) {
+      var fs = document.createElement("fieldset");
+      var html = '<legend><span>' + d.k + '</span>' + d.name + '</legend><p class="q">' + d.q + '</p><div class="opts">';
+      d.levels.forEach(function (lv, j) {
+        var id = "d" + i + "v" + (j + 1);
+        html += '<input type="radio" name="d' + i + '" id="' + id + '" value="' + (j + 1) + '">' +
+                '<label for="' + id + '"><b>' + (j + 1) + '</b>' + lv + '</label>';
+      });
+      fs.innerHTML = html + "</div>";
+      dimsEl.appendChild(fs);
+    });
+
+    function $(id) { return document.getElementById(id); }
+    var form = $("rapid-form");
+
+    function scores() {
+      return DIMS.map(function (_, i) {
+        var c = form.querySelector('input[name="d' + i + '"]:checked');
+        return c ? +c.value : 0;
+      });
+    }
+
+    function render() {
+      var s = scores();
+      var done = s.every(function (v) { return v > 0; });
+      var total = s.reduce(function (a, b) { return a + b; }, 0);
+      var name = $("pname").value.trim();
+      $("r-name").textContent = name ? name : "Your result";
+      $("r-total").textContent = total;
+      $("r-bar").style.width = (total / 20 * 100) + "%";
+
+      var verdict = "Score all five", detail = "Pick a level for each letter, or load an example.";
+      if (done) {
+        if (total >= 15) { verdict = "Automate"; detail = "A strong candidate. Next, choose the tool on Capability, Cost, Change, and Compliance."; }
+        else if (total >= 10) { verdict = "Not ready: document first"; detail = "Standardize and write down the process, then score it again."; }
+        else { verdict = "Redesign or leave to people"; detail = "Automation would add cost without adding value. This work needs judgment."; }
+      }
+
+      var flags = [];
+      if (done) {
+        if ($("c-value").checked) flags.push(["Question it first.", "If no one can say what breaks when it stops, ask whether the process should exist at all. The cheapest automation is the one you never build."]);
+        if ($("c-broken").checked) flags.push(["Fix before you pave.", "A known break means automation would only make the broken process faster. Diagnose the root cause, then rescore."]);
+        if ($("c-owner").checked) flags.push(["Name the owner.", "An unowned handoff is where automated workflows fail silently. Assign an owner for every handoff before you build."]);
+        if (s[4] <= 2 && total >= 15) flags.push(["Write it down.", "The score says automate, but D is low. Document the real steps first, or you will automate a guess."]);
+        if (s[1] === 4 && total >= 15) flags.push(["Keep a person on the output.", "Errors carry risk or compliance exposure. Build a human review gate into the design."]);
+        if (flags.length && total >= 15) verdict = "Automate, after the diagnosis";
+      }
+
+      $("r-verdict").textContent = verdict;
+      $("r-detail").textContent = detail;
+      $("r-flags").innerHTML = flags.map(function (f) {
+        return "<li><b>" + f[0] + "</b> " + f[1] + "</li>";
+      }).join("");
+    }
+
+    function load(i) {
+      var ex = EXAMPLES[i];
+      $("pname").value = ex.name;
+      ex.s.forEach(function (v, j) { $("d" + j + "v" + v).checked = true; });
+      $("c-broken").checked = ex.broken;
+      $("c-owner").checked = ex.owner;
+      $("c-value").checked = ex.value;
+      document.querySelectorAll(".chip").forEach(function (c, j) { c.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      render();
+    }
+
+    document.querySelectorAll(".chip").forEach(function (c) {
+      c.addEventListener("click", function () { load(+c.getAttribute("data-ex")); });
+    });
+    form.addEventListener("change", render);
+    $("pname").addEventListener("input", render);
+    $("b-print").addEventListener("click", function () { window.print(); });
+    $("b-reset").addEventListener("click", function () {
+      form.reset();
+      document.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+      render();
+    });
+
+    load(0);
+  })();
+  </script>
+</body>
+</html>
