@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governed AI in a Regulated Function | Sandie Dela Cruz</title>
+  <meta name="description" content="Case study: putting generative AI and a Copilot agent into a regulated Medical Affairs function with human review built in.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Sandie Dela Cruz <span>AuD, OD, MBA</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#work" aria-current="page">Work</a>
+        <a href="../index.html#method">Method</a>
+        <a href="../samples.html">Samples</a>
+        <a href="../speaking.html">Speaking</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Case study · Responsible AI</p>
+        <h1>Putting generative AI to work in a regulated function</h1>
+        <p class="lede">In a regulated function, the question is not whether AI can draft the answer. It is who is accountable when it does.</p>
+        <div class="case-meta">
+          <div><b>Setting</b>Medical Affairs, global medical device company</div>
+          <div><b>My role</b>Designed the solutions and the governance, led delivery</div>
+          <div><b>Tools</b>Microsoft Copilot Studio, AI Builder, Power Automate, Dataverse</div>
+          <div><b>Result</b>A reusable pattern for AI with human review</div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap case-body">
+        <h2><small>Examine</small> The complaint</h2>
+        <p>A shared mailbox received a steady stream of proctor and physician email. Clinical recommendations were buried in free text, turnaround was hard to see, and checking those recommendations against procedure outcomes was slow manual work.</p>
+
+        <h2><small>Diagnose</small> What AI should and should not own</h2>
+        <p>Reading, sorting, matching, and summarizing unstructured text is work AI does well. Sending an answer on behalf of a medical device company is not something it should do alone. The design had to put AI on the first and keep people firmly on the second.</p>
+
+        <h2><small>Prescribe and Treat</small> Three solutions, one pattern</h2>
+        <ul>
+          <li><b>Compliance checker.</b> Generative AI extracts clinical recommendations from proctor emails, matches them to procedure outcome data in the CRM, and classifies compliance. Built through proof of concept on de-identified test data, with an engineered prompt library and full documentation.</li>
+          <li><b>Mailbox intelligence.</b> Matches each incoming email to its original request and scores sentiment, giving leadership a request-to-resolution view of turnaround time and physician experience.</li>
+          <li><b>Copilot agent with a review gate.</b> Drafts replies from an approved knowledge source. A person reviews every reply before it is sent. Nothing goes out on the agent's authority.</li>
+        </ul>
+
+        <h2><small>Follow Up</small> What carried forward</h2>
+        <p>The pattern is the asset: approved knowledge source, de-identified data for testing, documented prompts, and a human review gate before anything leaves the building. It gives a regulated team a way to say yes to AI without giving up accountability.</p>
+
+        <div class="callout">
+          <p><b>The lesson:</b> governance is not the brake on AI adoption in regulated work. It is what makes adoption possible.</p>
+        </div>
+
+        <div class="next-case">
+          <p class="eyebrow">Next case study</p>
+          <p><a href="adoption.html">Making new tools stick with the people who use them</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Sandie Dela Cruz, AuD, OD, MBA</span>
+      <span><a href="../contact.html">Contact</a> · <a href="https://www.linkedin.com/in/sandiedelacruz">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>
